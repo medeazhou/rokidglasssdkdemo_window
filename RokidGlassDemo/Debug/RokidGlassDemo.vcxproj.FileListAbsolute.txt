@@ -1,0 +1,2 @@
+C:\work\demo\RokidGlassDemo\Debug\RokidGlassDemo.exe
+C:\work\demo\RokidGlassDemo\Debug\RokidGlassDemo.pdb
