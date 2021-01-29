@@ -1,0 +1,6 @@
+﻿  RokidGlassDemo.cpp
+D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\lib\include\glass.h(33,2): warning C4091: “typedef ”: 没有声明变量时忽略“SENSORID”的左侧
+D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\lib\include\glass.h(41,2): warning C4091: “typedef ”: 没有声明变量时忽略“KEY_CODE”的左侧
+D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\lib\include\glass.h(58,2): warning C4091: “typedef ”: 没有声明变量时忽略“TOUCH_EVENT”的左侧
+D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\lib\include\glass.h(65,2): warning C4091: “typedef ”: 没有声明变量时忽略“VIDEO_TYPE”的左侧
+  RokidGlassDemo.vcxproj -> D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\x64\Debug\RokidGlassDemo.exe
