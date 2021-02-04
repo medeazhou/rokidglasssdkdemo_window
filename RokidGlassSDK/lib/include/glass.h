@@ -37,7 +37,7 @@ typedef enum KEY_CODE {
 	/** 返回键 */
 	BACK_KEY = 4,
 	/** 熄屏键 */
-	POWER_KEY = 10
+	POWER_KEY = 16
 };
 
 /** 触摸事件类型 */
@@ -65,14 +65,24 @@ typedef enum VIDEO_TYPE {
 };
 
 /** Camera 图片基本信息 */
-typedef struct _VidoFormat {
+typedef struct _VideoFormat {
 	/** Camera 图片类型 */
 	int type;
 	/** Camera 图片高度 */
 	long height;
 	/** Camera 图片宽度 */
 	long width;
-}VidoFormat;
+}VideoFormat;
+
+/** Audio 格式基本信息 */
+typedef struct _AudioFormat {
+	/** Audio 通道个数 */
+	int channels;
+	/** Audio 采样率 */
+	int sample;
+	/** Audio 采样位数 */
+	long bitsPerSample;
+}AudioFormat;
 
 /** Glass设备能力回调函数结构体 */
 typedef struct  _GlassEvent{
@@ -91,7 +101,7 @@ typedef struct  _GlassEvent{
 	/** 返回光线传感器事件，value 光线强度，单位lux */
 	void (*onLightSensorEvent)(int value);
 	/** 返回Camera图片数据，timestamp 事件戳， format 图片信息  pBuf 图片数据 size 图片数据数组的长度 */
-	void (*onCaptureEvent)(double timestamp, VidoFormat *format, BYTE* pBuf, long size);
+	void (*onCaptureEvent)(double timestamp, VideoFormat* format, BYTE* pBuf, long size);
 	/** 返回Audio媒体流数据， pBuf 媒体流数据， frames 数组长度 */
 	void (*onAudioEvent)(BYTE* pBuf, long frames);
 }GlassEvent;
@@ -124,10 +134,10 @@ typedef struct  _GlassEvent{
  /***************************************************************
   *  @brief     获取Rokid Glass外设的唯一串号
   *  @param     instance glass句柄对象
-  *  @return    wchar_t 返回设备唯一串号，串号是有一组unicode字符串组成
+  *  @return    char* 返回设备唯一串号，串号是有一组unicode字符串组成
   *  @Sample usage:     nop
  **************************************************************/
- IMPORT_DLL	wchar_t *GlassGetSerialNumber(GlassHandle instance);
+ IMPORT_DLL	char* GlassGetSerialNumber(GlassHandle instance);
 
  /***************************************************************
   *  @brief     等待设备时间
@@ -163,6 +173,38 @@ typedef struct  _GlassEvent{
   *  @Sample usage:     nop
  **************************************************************/
  IMPORT_DLL void GlassStopCapture(GlassHandle instance);
+
+/***************************************************************
+*  @brief     获取的Mic array设备的基本信息，通道个数，采样率和采样位数
+*  @param     instance glass句柄对象
+*  @return    null
+*  @note      初始化并且启动麦克风阵列，眼镜中有两个麦克风，格式分别为16bit/16000sample/2channel。
+*  @Sample usage:     nop
+**************************************************************/
+ IMPORT_DLL void GlassGetAudioFormat(GlassHandle instance, AudioFormat* audioFormat);
+
+ /***************************************************************
+*  @brief     获取AR Glass中Mic Array一帧中的字节长度
+*  @param     instance glass句柄对象
+*  @return    frame的字节长度
+**************************************************************/
+ IMPORT_DLL int GlassGetAudioFrameSize(GlassHandle instance);
+
+ /***************************************************************
+ *  @brief     启动Rokid Glass设备中的Mic array
+ *  @param     instance glass句柄对象
+ *  @return    null
+ *  @note      初始化并且启动麦克风阵列，眼镜中有两个麦克风，格式分别为16bit/16000sample/2channel。
+**************************************************************/
+ IMPORT_DLL void GlassStartAudio(GlassHandle instance);
+
+ /***************************************************************
+  *  @brief     停止Rokid Glass设备中的Mic array
+  *  @param     instance glass句柄对象
+  *  @return    null
+ **************************************************************/
+ IMPORT_DLL void GlassStopAudio(GlassHandle instance);
+
 #ifdef __cplusplus
 }
 #endif
