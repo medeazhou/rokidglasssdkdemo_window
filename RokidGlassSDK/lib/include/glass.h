@@ -160,7 +160,7 @@ typedef struct  _GlassEvent{
   *  @brief     启动Rokid Glass设备中的Camera preview
   *  @param     instance glass句柄对象
   *  @return    GlassHandle 初始化Rokid Glass设备返回的设备句柄
-  *  @note      初始化并且启动Camera，Camera的preview数据通过回调函数onCaptuerEvnet将图像数据返回给调用者。
+  *  @note      初始化并且启动Camera，Camera的preview数据通过回调函数onCaptureEvent将图像数据返回给调用者。
   *  @Sample usage:     nop
  **************************************************************/
  IMPORT_DLL void GlassStartCapture(GlassHandle instance);
@@ -175,7 +175,7 @@ typedef struct  _GlassEvent{
  IMPORT_DLL void GlassStopCapture(GlassHandle instance);
 
 /***************************************************************
-*  @brief     获取的Mic array设备的基本信息，通道个数，采样率和采样位数
+*  @brief     获取的Mic array设备的基本信息，通道个数，采样率和采样位深
 *  @param     instance glass句柄对象
 *  @return    null
 *  @note      初始化并且启动麦克风阵列，眼镜中有两个麦克风，格式分别为16bit/16000sample/2channel。

@@ -1,2 +1,0 @@
-D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\x64\Debug\RokidGlassDemo.exe
-D:\rokid_work\rokidglasssdkdemo_window\RokidGlassDemo\x64\Debug\RokidGlassDemo.pdb
